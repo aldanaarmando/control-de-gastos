@@ -14,7 +14,7 @@ class GastoController extends Controller
      */
     public function index()
     {
-        //
+        return view('gasto.index');
     }
 
     /**
@@ -24,7 +24,8 @@ class GastoController extends Controller
      */
     public function create()
     {
-        //
+        return view('gasto.create');
+
     }
 
     /**
@@ -35,7 +36,19 @@ class GastoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+             $request->validate([
+            'id_gasto'=>'required',
+            'nombre_gasto'=>'required',
+            'tipo_gasto'=>'required',
+            'precio_unitario'=>'required',
+            'cantidad'=>'required',
+            'total'=>'required',
+   
+        ]);
+       Gasto::create($request->all());
+      
+           Session::flash('message','Gasto registrado correctamente');
+           return redirect()->route('gasto.index');
     }
 
     /**

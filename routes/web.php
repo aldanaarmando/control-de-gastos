@@ -12,6 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 Route::resource('/ingreso', 'IngresoController');
+Route::resource('/gasto', 'GastoController');
+Route::resource('/contacto', 'ContactoController');
+Route::resource('/inicio','InicioController');

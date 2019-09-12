@@ -14,7 +14,13 @@ class CreateGastosTable extends Migration
     public function up()
     {
         Schema::create('gastos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->unsignedInteger('id_gasto');
+            $table->string('nombre_gasto');
+            $table->string('tipo_gasto');
+            $table->integer('precio_unitario');
+            $table->integer('cantidad');
+            $table->integer('total');
+            $table->index(['id_gasto']);
             $table->timestamps();
         });
     }
@@ -23,6 +29,18 @@ class CreateGastosTable extends Migration
      * Reverse the migrations.
      *
      * @return void
+     * 
+     * 
+
+
+
+
+
+
+
+
+
+
      */
     public function down()
     {

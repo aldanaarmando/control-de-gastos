@@ -14,7 +14,11 @@ class CreateIngresosTable extends Migration
     public function up()
     {
         Schema::create('ingresos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->unsignedInteger('id_ingreso');
+            $table->string('nombre_ingreso');
+            $table->string('tipo_ingreso');
+            $table->integer('total');
+            $table->index(['id_ingreso']);
             $table->timestamps();
         });
     }
