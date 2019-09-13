@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\ingreso;
+use App\Ingreso;
 use Illuminate\Http\Request;
-
+use Session;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Database\Eloquent;
+use App\Http\Controllers\User;
 class IngresoController extends Controller
 {
     /**
@@ -69,7 +72,7 @@ class IngresoController extends Controller
      */
     public function edit(ingreso $ingreso)
     {
-        //
+        return view('ingreso.edit',compact ('ingreso'));
     }
 
     /**
@@ -79,9 +82,17 @@ class IngresoController extends Controller
      * @param  \App\ingreso  $ingreso
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ingreso $ingreso)
+    public function update(Request $request,Ingreso $ingreso)
     {
-        //
+        $request->validate([
+            'id_ingreso'=>'required',
+            'nombre_ingreso'=>'required',
+            'tipo_ingreso'=>'required',
+            'total'=>'required',
+        ]);
+           $ingreso->update($request->all());
+                   Session::flash('message','Registro editado correctamente');
+           return redirect()->route('ingreso.index');
     }
 
     /**
@@ -92,6 +103,8 @@ class IngresoController extends Controller
      */
     public function destroy(ingreso $ingreso)
     {
-        //
+        $ingreso->delete();
+        Session::flash('message','Registro eliminado correctamente');
+return redirect()->route('ingreso.index');
     }
 }

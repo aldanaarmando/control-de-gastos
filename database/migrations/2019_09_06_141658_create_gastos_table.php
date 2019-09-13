@@ -17,8 +17,6 @@ class CreateGastosTable extends Migration
             $table->unsignedInteger('id_gasto');
             $table->string('nombre_gasto');
             $table->string('tipo_gasto');
-            $table->integer('precio_unitario');
-            $table->integer('cantidad');
             $table->integer('total');
             $table->index(['id_gasto']);
             $table->timestamps();

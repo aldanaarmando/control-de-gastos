@@ -17,20 +17,22 @@
     <header>
       <div class="contenedor">
         <div id="marca">
-          <h1><span class="resaltado"></span></h1>
+        <h1><span class="resaltado">CHANGARRO</span></h1>
         </div>
         <nav>
           <ul>
-            <li class="actual"><a href="/inicio">Inicio</a></li>
+            <li><a href="/inicio">Inicio</a></li>
             <li><a href="/ingreso">Ingresos</a></li>
             <li><a href="/gasto">Gastos</a></li>
               <li><a href="/contacto">Contacto</a></li>
+              
           </ul>
         </nav>
       </div>
     </header>
   </head>
   <body>
+
       
     @yield('content')
 

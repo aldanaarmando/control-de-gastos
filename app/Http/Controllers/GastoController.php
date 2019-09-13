@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\gasto;
 use Illuminate\Http\Request;
+use Session;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Database\Eloquent;
+use App\Http\Controllers\User;
 
 class GastoController extends Controller
 {
@@ -14,7 +18,8 @@ class GastoController extends Controller
      */
     public function index()
     {
-        return view('gasto.index');
+        $gastos=Gasto::all();
+        return view('gasto.index',compact('gastos'));
     }
 
     /**
@@ -40,8 +45,6 @@ class GastoController extends Controller
             'id_gasto'=>'required',
             'nombre_gasto'=>'required',
             'tipo_gasto'=>'required',
-            'precio_unitario'=>'required',
-            'cantidad'=>'required',
             'total'=>'required',
    
         ]);
@@ -70,7 +73,7 @@ class GastoController extends Controller
      */
     public function edit(gasto $gasto)
     {
-        //
+        return view('gasto.edit',compact ('gasto'));
     }
 
     /**
@@ -82,7 +85,15 @@ class GastoController extends Controller
      */
     public function update(Request $request, gasto $gasto)
     {
-        //
+        $request->validate([
+            'id_gasto'=>'required',
+            'nombre_gasto'=>'required',
+            'tipo_gasto'=>'required',
+            'total'=>'required',
+        ]);
+           $gasto->update($request->all());
+                   Session::flash('message','Registro editado correctamente');
+           return redirect()->route('gasto.index');
     }
 
     /**

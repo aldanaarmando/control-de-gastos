@@ -4,18 +4,16 @@
 
 <h1 class="text-center">Ingresos</h1>
 <div class="container">
-    <a class="btn btn-info mb-4"
 
-       href="{{route('ingreso.create')}}">Nueva Ingreso</a>
 
     <table class="table">
-  <thead class="thead-dark">
+  <thead class="thead-light">
     <tr>
     
-      <th scope="col">Id_ingreso</th>
-      <th scope="col">Nombre del ingreso</th>
-      <th scope="col">Tipo de ingreso</th>            
-      <th scope="col">Total</th>                                 
+      <th scope="col" width="10%">Id_ingreso</th>
+      <th scope="col" width="20%">Nombre del ingreso</th>
+      <th scope="col" width="20%">Tipo de ingreso</th>            
+      <th scope="col" width="10">Total</th>                                 
      
     </tr>
   </thead>
@@ -27,12 +25,20 @@
       <td>{{ $ingreso->nombre_ingreso}}</td>
       <td>{{ $ingreso->tipo_ingreso}}</td>
       <td>{{ $ingreso->total}}</td>
-    </tr>
+      <td><a class="btn btn-info" href="{{route('ingreso.edit',$ingreso->id_ingreso)}}">Editar</a></td>
+             <form action="{{route('ingreso.destroy',$ingreso->id_ingreso)}}" method="post">
+          @csrf
+         @method('DELETE')
+                 <td><button type="submit" class="btn btn-info" >Eliminar</button></td>
+         </form>
+</tr>
 @endforeach
-@csrf
+    </tr>
   </tbody>
         
 </table>
+<a class="btn btn-info mb-4"
+       href="{{route('ingreso.create')}}">Nuevo Ingreso</a>
 </div>
 
 @endsection

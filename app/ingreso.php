@@ -9,4 +9,5 @@ class ingreso extends Model
     protected $fillable = [
         'id_ingreso','nombre_ingreso','tipo_ingreso','total'
        ];
+       protected $primaryKey = 'id_ingreso';
 }
