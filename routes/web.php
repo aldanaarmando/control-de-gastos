@@ -18,3 +18,4 @@ Route::resource('/ingreso', 'IngresoController');
 Route::resource('/gasto', 'GastoController');
 Route::resource('/contacto', 'ContactoController');
 Route::resource('/inicio','InicioController');
+Route::resource('/usuario','UsuarioController');
