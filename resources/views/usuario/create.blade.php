@@ -33,25 +33,25 @@
 <div class="form-group row">
   <label for="example-search-input" class="col-2 col-form-label">Apellido materno</label>
   <div class="col-10">
-    <input class="form-control" type="search" name="apellido_mat" style="width:300px;height:30px">
+    <input class="form-control" type="text" name="apellido_mat" style="width:300px;height:30px">
   </div>
 </div>
 <div class="form-group row">
   <label for="example-search-input" class="col-2 col-form-label">Fecha de nacimiento</label>
   <div class="col-10">
-    <input class="form-control" type="search" name="fecha_nac" style="width:300px;height:30px">
+    <input class="form-control" type="text" name="fecha_nac" style="width:300px;height:30px">
   </div>
 </div>
 <div class="form-group row">
   <label for="example-search-input" class="col-2 col-form-label">Numero de celular</label>
   <div class="col-10">
-    <input class="form-control" type="search" name="celular" style="width:300px;height:30px">
+    <input class="form-control" type="text" name="celular" style="width:300px;height:30px">
   </div>
 </div>
 <div class="form-group row">
   <label for="example-search-input" class="col-2 col-form-label">Genero</label>
   <div class="col-10">
-    <input class="form-control" type="search" name="genero" style="width:300px;height:30px">
+    <input class="form-control" type="text" name="genero" style="width:300px;height:30px">
   </div>
 </div>
   <div>

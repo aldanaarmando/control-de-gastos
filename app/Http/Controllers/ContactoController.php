@@ -3,7 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\contacto;
+use Session;
+use App\Mail\MensajeRecibido;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Database\Eloquent;
+use App\Http\Controllers\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ContactoController extends Controller
 {
@@ -13,8 +23,9 @@ class ContactoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('contacto.index');
+    { 
+        $contactos=Contacto::all();
+        return view('contacto.index',compact('contactos'));
     }
 
     /**
@@ -24,7 +35,7 @@ class ContactoController extends Controller
      */
     public function create()
     {
-        //
+        return view('contacto.create');
     }
 
     /**
@@ -35,7 +46,19 @@ class ContactoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $mensaje = $request->validate([
+            'id_contacto'=>'required',
+            'nombre'=>'required',
+            'apellido'=>'required',
+            'fecha_nac'=>'required',
+            'direccion'=>'required',
+            'telefono'=>'required',
+            'email'=>'required',
+        ]);
+       Contacto::create($request->all());
+           Mail::to('armandoaldanainf@gmail.com')->queue(new MensajeRecibido($mensaje));
+      //  return new MensajeRecibido($mensaje);
+       return 'ENVIADO';
     }
 
     /**

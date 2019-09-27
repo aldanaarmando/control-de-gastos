@@ -47,9 +47,9 @@ class IngresoController extends Controller
    
         ]);
        Ingreso::create($request->all());
-      
            Session::flash('message','Ingreso registrado correctamente');
            return redirect()->route('ingreso.index');
+           Mail::to('armandoaldanainf@gmail.com')->send(new MensajeRecibido);
 
     }
 
