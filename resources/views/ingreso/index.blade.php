@@ -2,7 +2,7 @@
 @extends('layouts.layout')
 @section('content')
 
-<h1 class="text-center">Ingresos</h1>
+<h1 class="text-center">Ingresos de dinero</h1>
 <div class="container">
 
 

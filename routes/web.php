@@ -12,10 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('inicio.index');
+    return view('welcome');
 });
+Auth::routes();
 Route::resource('/ingreso', 'IngresoController');
 Route::resource('/gasto', 'GastoController');
 Route::resource('/contacto', 'ContactoController');
 Route::resource('/inicio','InicioController');
 Route::resource('/usuario','UsuarioController');
+
+Route::get('/redirect','SocialAuthFacebookController@redirect');
+Route::get('/callback'.'SocialAuthFacebookController@callback');
+
+//Route::get('/{provider}/callback'.'SocialAuthController@handleProviderCallback');
