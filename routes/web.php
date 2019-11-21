@@ -1,5 +1,5 @@
 <?php
-
+ use App\Mail\TestEmail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +20,19 @@ Route::resource('/gasto', 'GastoController');
 Route::resource('/contacto', 'ContactoController');
 Route::resource('/inicio','InicioController');
 Route::resource('/usuario','UsuarioController');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/redirect','SocialAuthFacebookController@redirect');
-Route::get('/callback'.'SocialAuthFacebookController@callback');
+Route::get('login/facebook', 'Auth\LoginController@redirectToProviderFacebook');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderFacebookCallback');
+Route::get('login/google', 'Auth\LoginController@redirectToProviderGoogle');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderGoogleCallback');
+Route::get('login/github', 'Auth\LoginController@redirectToProviderGithub');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderGithubCallback');
 
 //Route::get('/{provider}/callback'.'SocialAuthController@handleProviderCallback');
+Route::get('/testmail', function() {
+$data = ['message' => 'This is a test!'];
+Mail::to('armandoaldanainf@gmail.com')->send(new TestEmail($data));
+
+return back();
+})->name('testmail');
